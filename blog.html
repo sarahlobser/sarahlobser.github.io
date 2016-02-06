@@ -1,0 +1,111 @@
+<head>
+<link rel="stylesheet" type="text/css" href="blogstyles.css"/>
+<title>Blog</title>
+</head>
+<body>
+	
+	<div id="header">
+		
+		<h1><sp>n</sp>eophyte to k<sp>n</sp>owledgeable in <sp>n</sp>ineteen weeks
+		<sp id="subtitle"><br>Watch me learn how to program. It'll be fun.</sp></h1>
+	</div>
+	<div class="left">
+		<a href="http://sarahlobser.github.io/index.html">
+		<img src="Sarah-laughingfuncolors.jpg"/></a>
+		<h1 id="caption">It's Happening.</h1>
+	</div>
+	<div class="right">
+		<ul>
+			<li><h2>Intro</h2><h3>A first-time blogger blogs about learning how to 
+				program, and hopefully learns how to blog in the process</h3>
+				<p>Here I am at ground zero of my decision to take up web development 
+				as a potential career. On February 29, 2016, I will begin a nineteen 
+				week program designed to turn me into a full stack Java developer. 
+				These "developer boot camps," as they're called, are really in these days.
+				It seems universities can't churn out qualified CS degree holders fast
+				enough to meet the industry's demand, and programs are popping up all 
+				over hoping to fill in the training gap and take their slice of the 
+				tech-$ cake. I chose 
+				<a href = "http://www.skilldistillery.com">Skill Distillery</a> 
+				for 3 reasons: 1. Skill Distillery 
+				is the only program of its kind (at the time of this writing) to accept
+				the GI Bill. As a veteran of the US Navy with a GI Bill burning a hole in 
+				my pocket right now, this is a huge selling point. 2. Curriculum. Skill 
+				Distillery's main priority is to help me get a job. Where a lot of other
+				boot camps focus on Ruby, Java is a key component on most developer job
+				announcements. I learned Java almost 20 years ago, and apparently it's 
+				still a thing. 3. Geographical location. Skill Distillery happens to be
+				right down the road from my home town of Littleton, Colorado. 
+				Besides, who can argue with the 
+				Rocky Mountains? No one can. Mountains are made of rocks, and rocks
+				don't argue.</p><p>So join me on my journey as I attempt to get from
+				neophyte to knowledgeable in nineteen weeks. 
+				Witness my frustrations, excitement, 
+				victories, and failures. What could be more fun?
+				</p>
+			</li>
+			<li><h2>February 5, 2016: Day -24</h2>
+				<h3>Pre-work! And,</h3>
+			    <h3>The difference between <sp>switch</sp> and 
+			    <sp>if else</sp> in Java</h3>
+			    <p>I'm in the midst of pre-work for the developer boot camp I'm starting 
+			    in 24 days. I've been tasked with building a web presence via this blog. 
+			    This is meant to showcase my growing technical knowledge, though I will 
+			    also be using it to vent my frustrations, gloat over my breakthroughs 
+			    (assuming these will occur), 
+			    and muse over the process of learning in general.</p>
+			    <p>I'm currently working through <a href="http://learnjavathehardway.org">
+			    Learn Java The Hard Way</a>. This seems like a great text for beginners. 
+			    Lots of practice writing workable code, lots of repetition. As I am not 
+			    a complete beginner, there's a bit too much repetition and slow build-up
+			    for my taste. So I do skip around a bit, and hope that's not just a 
+			    manifestation of my lack of patience. As for technical details, I suppose 
+			    it's time to throw you a tidbit...</p>
+			    <p><sp class="emph">if else statements in Java. What are they all about?
+			    </sp>
+			    <br>The basic construct goes like this:
+			    <br><br><sp class="code">if (condition is true) {do this}</sp>
+			    <br><br>else can be used in conjunction, as an "otherwise..." statement:
+			    <br><br><sp class="code">if (condition is true) {do this}
+			    <br>else {do that}</sp>
+			    <br><br>multiple mutually exclusive conditions can be tested in a 
+			    chain of if else statements:
+			    <br><br><sp class="code">if (condition A is true) {do this}
+			    <br>else if (condition B is true) {do this other thing}
+			    <br>else if (condition C is true) {do that}
+			    <br>else {do something else entirely}</sp>
+			    </p>
+			    <p>So if else is an all-purpose construct for testing conditions. Another 
+			    way to test for conditions is the switch statement. Switch has a narrower 
+			    range of applicability, but in certain circumstances is the best option. 
+			    Consider the following pseudo-example:
+			    <br><br><sp class="code">switch(variable with, say, 4 possible values) {
+			    <br>case 1: do a thing; break;
+			    <br>case 2: do another thing; break;
+			    <br>case 3: do a third thing; break;
+			    <br>case 4: do a fourth thing; break;
+			    <br>}</sp>
+			    <p><sp class="emph">switch: when do I use it?</sp> 
+			    There are a couple things to consider.
+			    Any switch statement could be written as an if-else statement,
+			    but only certain if-else statements can be re-written using switch. Also, 
+			    if-else can test over a range of values or conditions (is n less than 5?),
+			    but switch tests for equality only and is used when the variable in 
+			    question can take one of several (discrete) values. 
+			    The example I have seen most often
+			    is months of the year. The variable "month" can only take one of 12 values.
+			    In this scenario using switch works better than if-else for two reasons. 
+			    First, it's faster. switch is compiled to a lookup table and involves one 
+			    operation. Written as an if-else statement, each case is tested, which
+			    takes N operations (N being the number of cases). 
+			    Second, it's cleaner and easier to read and maintain.
+			    </p>
+			</li>
+			<li><h2>A future date</h2>
+				<h3>TBD</h3>
+				<p>Stay Tuned...</p>
+			</li>
+		</ul>
+	</div>
+	
+</body>
