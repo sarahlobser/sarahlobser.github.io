@@ -101,9 +101,76 @@
 			    Second, it's cleaner and easier to read and maintain.
 			    </p>
 			</li>
-			<li><h2>A future date</h2>
-				<h3>TBD</h3>
-				<p>Stay Tuned...</p>
+			<li><h2>February 12, 2016: Day -17</h2>
+				<h3>Java the Hard Way next steps, and working with arrays</h3>
+				<p>Over the past week I have skipped around through the Java the Hard
+				Way book, going through exercises I found interesting. At the very end
+				of the book, Graham Mitchell gives us a nice pat on the back for 
+				finishing these 58 exercises, then tells us we still need a lot more
+				practice. And it's true! He gives a link to a series of assignments he 
+				gives to his students: </p>
+				<p><a href = "https://programmingbydoing.com/">
+				programmingbydoing.com</a></p><p>
+				I like these exercises because I don't get to cheat by looking at the 
+				code already written in front of me and typing it out word for word.
+				That puts me in a trance-like state and I have a hard time really learning
+				the material. These "next step" exercises force me to rely on my memory 
+				and work through a little trial and error before I figure things out.</p>
+				<p>So for example, in the middle of the section on arrays, Mitchell 
+				challenges us to create an array of 10 random numbers between 1 and 50.
+				Then we ask the user for a number between 1 and 50 and tell them whether
+				or that number is in the array. Here is the code I came up with: <br><br>
+				<sp class = "code">
+import java.util.Scanner;<br><br>
+
+public class FindaValue {<br>
+	public static void main(String[] args) {<br>
+		int[] arr = new int[10];<br>
+		int i = 0;<br>
+		for(i = 0; i < arr.length; i++) {<br>
+		   arr[i] = (int)(50*Math.random() + 1);<br>
+		}<br><br>
+		
+		Scanner keyboard = new Scanner(System.in);<br>
+		System.out.print("What number between 1 and 50 are you looking for? ");<br>
+		int guess = keyboard.nextInt();<br><br>
+		
+		for(i = 0; i < arr.length; i++) {<br>
+		   if(guess == arr[i]) System.out.println(guess + " is in the array!");<br>
+		}<br>
+	}<br>
+}
+				</sp><br><br>
+				If the style of this code is lacking in indentation, it's because 
+				I'm still a very new beginner with html and css, and haven't yet 
+				figured out the best way to insert whitespace. Just use your 
+				imagination for now.</p>
+				<p>
+				Java is a little awkward in my opinion. One of the more awkward things 
+				I do in Java is initializing an array. "int[] arr = new int[10]" seems
+				like it has a couple redundancies, but that's Java. There are three 
+				steps in initializing an array. First you declare it (int[] arr), 
+				and in this case I'm creating an integer array. This is important. 
+				You can't just throw a double into an integer array and hope that the
+				array will convert to an int for you. Your types have 
+				to match. The second step is to 
+				allocate space for the items you want to hold (new int[10]).
+				This second step is also important. In Java, you can't 
+				change the size of your
+				array. If you say you want 10 integers, you will never be able to add 
+				an 11th integer to that array. You would have to create a larger array 
+				and copy everything from the old to the new array. Anyway, the third 
+				step is to initialize the values held in the array. There is more 
+				than one way to do this, but in the code here, I use a for loop with 
+				a random number generator.</p>
+				<p>Notice in the for loop where I use i < arr.length as my condition, 
+				even though I know there are 10 items in the array, and 10 is a lot 
+				shorter to write than arr.length. I do it this way because it's more 
+				robust. Say I want to use this code again, but make the array bigger. 
+				I won't have to scan through the code to see if I need to change a 
+				bunch of 10s to, say, 50s. No matter what the size of the array happens 
+				to be, the loop will go through the whole thing.</p>
+				<p>Hope everyone has a great weekend. Happy Birthday, Lincoln!</p>
 			</li>
 		</ul>
 	</div>
