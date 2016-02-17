@@ -1,23 +1,28 @@
+<!DOCTYPE html>
 <head>
 <link rel="stylesheet" type="text/css" href="blogstyles.css"/>
+<link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
 <title>Blog</title>
 </head>
 <body>
 	
-	<div id="header">
-		
-		<h1><sp>n</sp>eophyte to k<sp>n</sp>owledgeable in <sp>n</sp>ineteen weeks
-		<sp id="subtitle"><br>Watch me learn how to program. It'll be fun.</sp></h1>
+	<div id="header">		
+		<p id="title"><strong>
+		<sp id="ns">n</sp>eophyte to k<sp id="ns">n</sp>owledgeable in 
+		<sp id="ns">n</sp>ineteen weeks</strong>
+		<sp id="subtitle"><br>Watch me learn how to program. It'll be fun.</sp></p>
 	</div>
+	
 	<div class="left">
 		<a href="http://sarahlobser.github.io/index.html">
 		<img src="Sarah-laughingfuncolors.jpg"/></a>
 		<h1 id="caption">It's Happening.</h1>
 	</div>
+	
 	<div class="right">
 		<ul>
-			<li><h2>Intro</h2><h3>A first-time blogger blogs about learning how to 
-				program, and hopefully learns how to blog in the process</h3>
+			<li><h2>Intro</h2><h5>A first-time blogger blogs about learning how to 
+				program, and hopefully learns how to blog in the process</h5>
 				<p>Here I am at ground zero of my decision to take up web development 
 				as a potential career. On February 29, 2016, I will begin a nineteen 
 				week program designed to turn me into a full stack Java developer. 
@@ -45,9 +50,9 @@
 				</p>
 			</li>
 			<li><h2>February 5, 2016: Day -24</h2>
-				<h3>Pre-work! And,</h3>
-			    <h3>The difference between <sp>switch</sp> and 
-			    <sp>if else</sp> in Java</h3>
+				<h5>Pre-work! And,<br>
+			    The difference between <sp>switch</sp> and 
+			    <sp>if else</sp> in Java</h5>
 			    <p>I'm in the midst of pre-work for the developer boot camp I'm starting 
 			    in 24 days. I've been tasked with building a web presence via this blog. 
 			    This is meant to showcase my growing technical knowledge, though I will 
@@ -102,7 +107,7 @@
 			    </p>
 			</li>
 			<li><h2>February 12, 2016: Day -17</h2>
-				<h3>Java the Hard Way next steps, and working with arrays</h3>
+				<h5>Java the Hard Way next steps, and working with arrays</h5>
 				<p>Over the past week I have skipped around through the Java the Hard
 				Way book, going through exercises I found interesting. At the very end
 				of the book, Graham Mitchell gives us a nice pat on the back for 
@@ -172,7 +177,71 @@ public class FindaValue {<br>
 				to be, the loop will go through the whole thing.</p>
 				<p>Hope everyone has a great weekend. Happy Birthday, Lincoln!</p>
 			</li>
+			<li><h2>February 17, 2016: Day -12</h2>
+				<h5>OOP, I did it again</h5>
+				<p>Sorry, bad joke. I'm turning into my dad. OOP of course stands for
+				<sp class="emph">O</sp>bject <sp class = "emph">O</sp>riented 
+				<sp class="emph">P</sp>rogramming. If you've been programming in Java,
+				you've been using an object oriented language. I've been working through 
+				these beginners books, writing code in Java, using this object oriented 
+				programming language, without really digging in to the object-oriented 
+				features of the language. 
+				OOP is a defining feature of the language, but it 
+				usually takes quite a while for the beginner to get a full explanation 
+				of what OOP means and how to make use of it.</p>
+				<p>The concepts in OOP are really pretty natural. 
+				Look around you and you'll see all kinds of objects belonging to 
+				different classes. Your chair, your dog, your house, etc. 
+				If you check out 
+				<a href="https://docs.oracle.com/javase/tutorial/java/concepts/">
+				Oracle's OOP tutorial<a> you'll see how they describe the features of 
+				classes and objects using the example of bicycles.</p>
+				<p>But let's compare a couple classes we see often as beginners.
+				The String class and the Math class. If you open up the documentation, 
+				you can see that the String class has constructors, and the Math class 
+				does not. It makes sense, we're always making new String
+				objects to use, but 
+				we can't really make a new Math object, can we?</p>
+				<p>This brings us to instance vs. static methods. In a class like 
+				String, you can see both instance and static methods. An instance method 
+				is always called from an instance of a class, that is, an object.</p>
+				<p>Let's make a new String:<br><br>
+				<sp class="code">String s = "sarah";</sp><br><br>
+				And now let's find out where the h is in the String:<br><br>
+				<sp class="code">s.indexOf("h");</sp><br><br>
+				The indexOf() method is an instance method, so I call it from the 
+				object in question, which in this case is s. The syntax is 
+				object.method(arguments).
+				<p>What about static methods? You can see an example of a static 
+				method in my last blog entry, where I used a random number generator:
+				<br><br>
+				<sp class="code">Math.random();</sp>
+				<br><br>
+				A static method doesn't get called from a particular object, that 
+				wouldn't make sense. Instead the syntax is 
+				Class.staticMethod(arguments). This syntax only changes when you're 
+				calling the method from inside the class, in which case you can drop 
+				the class and just use staticMethod(arguments).</p>
+				<p>I hope that makes sense. OOP is a big topic, and I don't want to 
+				totally delve into it with one blog entry. Little by little might be 
+				better.</p>
+				<p>On a different note, let me share with you another learning tool I've 
+				been using of late. It's a book called 
+				<a href="https://www.crcpress.com/A-Concise-Introduction-to-Data-Structures-using-Java/Johnson/9781466589896">
+				"A Concise Introduction to Data 
+				Structures Using Java"</a> by 
+				<a href="https://www.crcpress.com/authors/i239-mark-j-johnson">
+				Mark J. Johnson</a>. I really like this book. 
+				It is, as the title implies, quite concise. It's also clear and easy to 
+				read. For a beginner who has been through Learn Java the Hard Way and is 
+				interested in data structures, I highly recommend this book. 
+				Sometimes I'm sure hardcopy books are going by the wayside, but I keep 
+				finding scenarios in which being able to flip through the pages of a book 
+				is preferable to working through a digital document.</p>
+				<p>
+				
 		</ul>
 	</div>
 	
 </body>
+</html>
