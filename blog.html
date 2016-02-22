@@ -231,7 +231,7 @@ public class FindaValue {<br>
 				"A Concise Introduction to Data 
 				Structures Using Java"</a> by 
 				<a href="https://www.crcpress.com/authors/i239-mark-j-johnson">
-				Mark J. Johnson</a>. I really like this book. 
+				Mark J. Johnson</a>. 
 				It is, as the title implies, quite concise. It's also clear and easy to 
 				read. For a beginner who has been through Learn Java the Hard Way and is 
 				interested in data structures, I highly recommend this book. 
@@ -239,6 +239,208 @@ public class FindaValue {<br>
 				finding scenarios in which being able to flip through the pages of a book 
 				is preferable to working through a digital document.</p>
 				<p>
+				<li>
+				<h2>February 22, 2016: Day -7</h2>
+				<h5>A Java stack interface and array implementation</h5>
+				<p>
+				I'm working through this book I mentioned in my last post, A Concise 
+				Introduction to Data Structures Using Java. After getting through the 
+				front material, and a chapter on algorithm analysis (super interesting), 
+				I finally arrived at the discussion of the first data structure. Stacks. 
+				</p>
+				<p>
+				A stack can be described conceptually pretty easily because we see 
+				stacks of actual objects all the time. A stack of books. A stack of 
+				pancakes. A stack of towels. Whatever. The whole idea is you put items 
+				onto a stack one after another, and when you take something off the 
+				stack it comes off in the reverse order. And to be syntactically correct,
+				we'd say we'd "push" an item to the stack and
+				 "pop" the item to get it out. This is a <sp class="emph">LIFO</sp> 
+				 process. That is, Last In First Out.
+				 </p>
+				 <p>
+				 Now if we want to use a stack in one of our projects, we have to 
+				 <sp class="emph">implement</sp> the abstract concept of the stack, 
+				 and just like there is more than one way to skin a cat (I don't know 
+				 who ever came up with this expression, and I don't know why you'd 
+				 ever want to skin a cat, and maybe I just don't get it and maybe 
+				 I shouldn't use an expression that I don't fundamentally understand) 
+				 there is more than one way to implement a stack.
+				 </p>
+				 <p>
+				 Before I get into the specifics of the implementation, I want to talk 
+				 about 
+				 <sp class="emph">interfaces</sp>. 
+				 This is a concept I'm just starting to wrap my 
+				 head around. And it's strange to think about wrapping my head around 
+				 something, because I start to imagine my head is a sweater, or a 
+				 blanket, and I'm pulling the edges around some outside object and 
+				 zipping it up or something. That's just weird.
+				 </p>
+				 <p>
+				 Interfaces are also a little weird to me, but I'm starting to see 
+				 how they can be very useful. An interface is like the skeleton of 
+				 a class, with just a list of methods and no details on how those 
+				 methods will be implemented. For example, we want to use a stack, 
+				 and we don't necessarily want to make decisions written in stone 
+				 about how the stack should be implemented. We want to keep the details 
+				 of the stack abstract. Here's a stack interface we can use:
+				 </p>
+				 <p><sp class="code">
+				 public interface IntStack {<br>
+   				 boolean isEmpty();<br>
+  				 int peek();<br>
+			     int pop();<br>
+   				 void push(int item);<br>
+   				 int size();<br>
+				 }
+				 </sp>
+				 </p>
+				 <p>
+				 You'll notice the key word "interface" in the first line, where "class" 
+				 would go if we were writing a class. Then it gives the signature 
+				 for all the methods we want to use in our stack. We see push and pop.
+				 There is also isEmpty() which returns a boolean (true/false) telling 
+				 you whether the stack is empty. There's peek() which returns the top 
+				 value of the stack without popping that item. And there's size(), which,
+			     of course, will tell you the size of the stack. If you want, you can 
+			     think of an interface as a coded version of an API.
+				 </p>
+				 <p>
+				 So now that we have an interface, we have to do something to make the 
+				 methods presented here functional. Well that something is called an 
+				 implementation. And there is a specific way we write an implementation 
+				 in Java. An implementation is really just another class like we're 
+				 used to, with two caveats. First, in the definition of the class we
+				 have to add code that links the class to the interface. And second, 
+				 we have to make sure we include every method from the interface in the 
+				 implementation class.
+				 </p>
+				 <p><sp class="code">
+				 import java.util.EmptyStackException;<br><br>
+
+public class IntArrayStack implements IntStack {<br>
+   private int top = -1;<br>
+   private int[] data;<br>
+   private static final int DEFAULT_CAPACITY = 10;<br><br>
+   
+   public IntArrayStack() {<br>
+      data = new int[DEFAULT_CAPACITY];<br>
+   }<br><br>
+   
+   public void push(int item) {<br>
+      if(top == data.length -1) resize(2 * data.length);<br>
+      data[++top] = item;<br>
+   }<br><br>
+   
+   public int pop() {<br>
+      if(isEmpty()) throw new EmptyStackException();<br>
+      return data[top--];<br>
+   }<br><br>
+   
+   private void resize(int newCapacity) {<br>
+      int[] newData = new int[newCapacity];<br>
+      for(int i = 0; i <= top; i++) {<br>
+         newData[i] = data[i];<br>
+      }<br>
+      data = newData;<br>
+   }<br><br>
+   
+   public boolean isEmpty() {<br>
+      if(top == -1) return true;<br>
+      return false;<br>
+   }<br><br>
+   
+   public int peek() {<br>
+      if(isEmpty()) throw new EmptyStackException();<br>
+      return data[0];<br>
+   }<br><br>
+   
+   public int size() {<br>
+      return data.length;<br>
+   }<br><br>
+   
+   public static void main(String[] args) {<br>
+      IntStack s = new IntArrayStack();<br>
+      System.out.println("Empty? " + s.isEmpty());<br>
+      System.out.println("Size? " + s.size());<br>
+      for(int i = 0; i < 100; i++) {<br>
+         s.push(i);<br>
+      }<br>
+      System.out.println("Empty? " + s.isEmpty());<br>
+      System.out.println("Size? " + s.size());<br>
+      for(int i = 0; i < 100; i++) {<br>
+         System.out.print(" " + s.pop() + " ");<br>
+      }<br>
+   }<br>
+}
+				 </sp></p>
+				 <p>
+				 On the class definition line, you can see "public class IntArrayStack 
+				 implements IntStack." This is what links this class to the interface 
+				 IntStack. And if you compare one for one, you can see every method 
+				 in the interface is included in this class.
+				 </p>
+				 <p>
+				 So what's the upshot here? How do we use these things together to make 
+				 a stack and do all the things we want to do with it? Well if you look 
+				 at the main method here, you can get a better idea of how it all plays 
+				 out. When we want a new stack, we create one using the interface syntax, 
+				 along with the constructor from the implementation, as in:
+				 </p>
+				 <p><sp class="code">IntStack s = new IntArrayStack();</sp></p>
+				 <p>
+				 Here, s is a stack of type IntStack that utilizes the implementation 
+				 IntArrayStack.
+				 Now let's say we come along at a later date and decide we want to use 
+				 a different implementation of the stack. 
+				 Say we want to use a linked list implementation instead 
+				 of an array implementation. Then we just change the 
+				 constructor to something like 
+				 <p><sp class="code">IntStack s = new IntLinkedStack();<sp></p>
+				 <p>
+				 and all the other code referencing the stack s can stay just the 
+				 way it is.
+				 </p>
+				 <p>
+				 I really haven't discussed the actual array implementation at all here. 
+				 There are few items of interest there, and I'll just touch on those 
+				 briefly.
+				 </p>
+				 <p>
+				 The first item of interest is the resize method. One thing that 
+				 frustrates me about Java is that arrays cannot be resized. Once you 
+				 define an array, you can't make it bigger or smaller to suit your needs.
+				 Maybe I've talked about this before, that's how much it frustrates me. 
+				 Anyway, in a stack implementation, you may not know how big of an array 
+				 you need to begin with, so you have to guess. Then when you fill up the 
+				 array you have to create an new, bigger array and copy everything from 
+				 the old one to the new one. Well to be efficient about it, it's better 
+				 to just double the size of the array each time you need a bigger one, 
+				 rather than adding entries one at a time. This effectively adds a 
+				 logarithmic growth function instead of a linear one, so quite a bit 
+				 faster.
+				 </p>
+				 <p>
+				 Another item of interest is the prefix vs. postfix increments and 
+				 decrements in the push and pop methods. data[++top] does two things. 
+				 First it increments top by one. Then it references the item in data 
+				 with the incremented index. data[top--] also does two things. First 
+				 it references the item in data with the index top. Then it decrements 
+				 top. Just by placing the ++ and -- either before or after the variable 
+				 here changes the order of the operation. I think that's neat.
+				 </p>
+				 <p>
+				 The third item of interest is the Exception throwing. I haven't talked 
+				 about Exceptions at all yet I don't think. They're really important, 
+				 and I don't totally understand how to use them. I know there are 
+				 many different classes of Exceptions and can be used to let the user 
+				 know what kind of error was encountered at runtime. When one is thrown it 
+				 immediately stops running the code, and "catch" blocks come into play 
+				 as well. Not sure exactly how to use catch blocks. Exceptions are on 
+				 my list of things I should someday write about here. Stay tuned.
+				 </p>
+				</li>
 				
 		</ul>
 	</div>
