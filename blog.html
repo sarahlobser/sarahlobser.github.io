@@ -444,6 +444,134 @@ public class IntArrayStack implements IntStack {<br>
 				 my list of things I should someday write about here. Stay tuned.
 				 </p>
 				</li>
+				<li>
+				<h2>February 25, 2016: Day -4</h2>
+				<h5>Escape from Arrays!
+				<br>A Linked-List implementation of an integer stack</h5>
+				<p>
+				Well today is Thursday, just a few days before the start of this glorious 
+				boot camp. That means the time for pre-work is coming to a close. This 
+				time was supposed to have been spent going through Learn Java the Hard 
+				Way, and writing related blog posts. In that way I have failed, just 
+				a little. I only completed a smattering of exercises from the LJHW book. 
+				If you want to check out the exercises I did complete, you can see all 
+				the code at <a href="https://github.com/sarahlobser/javaHardWay">on my 
+				github</a>. You'll also find in there a few exercises I did from 
+				Graham Mitchell's follow on "Programming by Doing" that I mentioned in 
+				an earlier post. 
+				</p>
+				<p>
+				So I have obviously deviated from the path, and I hope that doesn't hurt 
+				me in the long run. But, I do think I have a pretty good grasp of the 
+				material presented in LJHW. And data structures are just so cool that 
+				I wanted to spend a little more time looking at them.
+				</p>
+				<p>
+				So, know how I've been complaining for quite a while about arrays in Java? 
+				They were really pissing me off with that whole Stack implementation 
+				thing. Well, I was pretty excited to learn more about the linked list 
+				implementation of the Stack. Linked lists have their own weirdnesses, 
+				but not having to constantly build new arrays to deal with shifting 
+				sizes is kinda worth it. 
+				</p>
+				<p>
+				Here's the basic idea of a linked list. You have a Node. And that Node 
+				contains one item (like an integer), and one reference to another Node. 
+				The last Node in the linked list will have a null reference, and the 
+				first Node will be the one you keep track of by calling it something 
+				special, like "head" or "Joseph" or whatever. You can use linked lists 
+				for various things, but for the purpose of stack implementation, we 
+				really just need to know how to push and pop.
+				</p>
+				<p>
+				So let's just look at the entire implementation...
+				</p>
+				<p><sp class="code">
+				import java.util.EmptyStackException;<br><br>
+
+public class IntLinkedStack implements IntStack {<br>
+   private Node top;<br>
+   private int size;<br><br>
+   
+   public void push(int item) {<br>
+      top = new Node(item, top);<br>
+   }<br><br>
+   
+   public int pop() {<br>
+      if(isEmpty()) throw new EmptyStackException();<br>
+      int result = top.data;<br>
+      top = top.next;<br>
+      return result;<br>
+   }<br><br>
+   
+   public boolean isEmpty() {<br>
+      if(top.next == null) return true;<br>
+      return false;<br>
+   }<br><br>
+   
+   public int peek() {<br>
+      return top.data;<br>
+   }<br><br>
+   
+   public int size() {<br>
+      size = 0;<br>
+      if(isEmpty()) return size;<br>
+      Node n = new Node(-1, top.next);<br>
+      do {<br>
+         size += 1;<br>
+         n.next = n.next.next;<br>
+      } while(n.next != null);<br>
+      return size;<br>
+   }<br><br>
+   
+   private class Node {<br>
+      private int data;<br>
+      private Node next;<br><br>
+      
+      public Node(int data, Node next) {<br>
+         this.data = data;<br>
+         this.next = next;<br>
+      }<br>
+   }<br><br>
+    
+   public static void main (String[] args) {<br>
+      IntStack s = new IntLinkedStack();<br>
+      for(int i = 0; i <= 20; i++)<br>
+         s.push(i);<br>
+      System.out.println("Size of Stack: " + s.size());<br>   
+      for(int i = 0; i < 20; i++)<br>
+        System.out.print(s.pop() + " ");<br>
+      System.out.println("\nSize of Stack: " + s.size());<br>
+        
+   }<br>
+}</sp></p>
+			<p>
+			Again, sorry for the lack of indentation in this code. Fixing that has just 
+			not been my highest priority. But I'll get there. I hope.
+			</p>
+			<p>
+			But check out this stack. So the Node at the top of the stack I'm calling 
+			"top" here. Take a look at the push method. It's pretty compact. You just 
+			pass it the integer you want to push, and it creates a new Node called top 
+			that refers to the old top Node. Pretty slick. Then with pop, all you have 
+			to do is make top.next the new top, and return the top.data value.
+			</p>
+			<p>
+			I think this was my first experience with nested classes. Inside the 
+			IntLinkedStack class there is a private Node class. This is the whole 
+			reason we can have these things we call Nodes. The class is private because 
+			this class doesn't need to be utilized outside of IntLinkedStack. As far 
+			as we're concerned this is just an implementation of IntStack and we don't 
+			need to make the nuts and bolts of the implementation visible.
+			</p>
+			<p>
+			The next chapter in this Data Structures book is on generic stacks. I'm not 
+			thrilled about starting on that right now. I might not get into it at all 
+			before Monday. It's probably a better idea to relax and enjoy my stress-free 
+			existence while it lasts. Maybe I'll check out the local wildlife. Did you 
+			know there's an elk living in my suburban residential neighborhood? I've 
+			seen him a couple times wandering through back yards. Seems unusual.
+			</p>
 				
 		</ul>
 	</div>
