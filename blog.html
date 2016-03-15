@@ -614,7 +614,8 @@ public class IntLinkedStack implements IntStack {<br>
 			<h2>March 14, 2016: Day 14</h2>
 			<h5><sp class="emph">A</sp>lways <sp class="emph">B</sp>e <sp class="emph">
 			C</sp>oding</h5>
-			<p>When I figure out how, maybe I'll post the video reference for that quote.
+			<p>When I figure out how, maybe I'll post the video reference for that quote. 
+			And thanks, Chad, for that. 
 			So, I guess I wasn't lying when I said my blogging would slow down when I 
 			got into the meat of the program. I mean, I didn't use the word meat before, 
 			but it sure feels like I'm in the meat now. If I had to compare it to a 
@@ -641,6 +642,14 @@ public class IntLinkedStack implements IntStack {<br>
 			your toString(), your main method, and your imports. That's pretty nice, 
 			because my hands are definitely aware of the amount of typing we already do.
 			</p>
+			<p>Eclipse makes it a little easier to organize files, which was nice this 
+			past weekend when we were working on our Jets projects. Make some jets, put 
+			them in a collection, assign them pilots, showing the fastest one, build 
+			a custom jet, hire a new pilot, etc. I got my first stack overflow! It was 
+			so exciting. It took me a minute to realize I can't put a field of type Pilot 
+			in my Pilot class. If I do, every newly instantiated pilot will instantiate 
+			a pilot....which will instantiate a pilot...you can see where this is going.
+			</p>
 			<p>This afternoon, we worked on IO stuff. We read U.S. presidents data from 
 			.csv and .txt files, built president objects and put them into ArrayLists, 
 			and filtered the lists to pick out, say, all presidents who belonged to the 
@@ -652,6 +661,43 @@ public class IntLinkedStack implements IntStack {<br>
 			changed his middle name to Herbert-Walker. My classmate Alex was studious 
 			enough to add the extra case to his code. Way to not cut corners, Alex.
 			</p>
+			<p>Oh here's another gem. Our instructor Jamie challenged us to implement 
+			bubble sort or insertion sort in a little piece of code. Here's a Java 
+			insertion sort for an array:
+			</p>
+			<p><sp class="code">
+			public static void insertionSort(int[] data) {<br>
+			for(int i = 1; i < data.length; i++) {<br>
+			int key = data[i];<br>
+			int j = i - 1;<br>
+			while(j >=0 && key < data[j]) {<br>
+				data[j + 1] = data[j];<br>
+				j--;<br>
+			}<br>
+			data[j + 1] = key;<br>
+			}<br>
+			}</sp></p>
+			</p>
+			<p>Here's how I implemented it for the ArrayList<Double> I was using. Same 
+			algorithm, different method calls. I'm still getting used to using ArrayLists. 
+			And I'm still getting used to reading the Java API. :-|
+			</p>
+			<p><sp class="code">
+			public void sortNumbers() {<br>
+			int i, j; <br>
+			Double key; <br>
+		
+			for(i = 1; i < numbers.size(); i++)  {<br>
+			key = numbers.get(i);<br>
+			j = i;<br>
+			while ((j>0) && (numbers.get(j-1) > key)) {<br>
+				numbers.set(j, numbers.get(j-1));<br>
+				j--;<br>
+			}<br>
+			numbers.set(j, key); <br>
+			}<br>
+			}<br>
+			</sp></p>
 			<p>So there you have it. So far, so good. I'm happy with the program, the 
 			instructors, the TAs, the slowly growing stack of in-house publications. 
 			The lemon-lime selzer water (am I the only one who drinks it?), the coffee. 
