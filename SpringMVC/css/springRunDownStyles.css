@@ -10,6 +10,24 @@ body {
     width: 90%;
 }
 
+#legend {
+    position: fixed;
+    top: 150px;
+    right: 100px;
+    background-color: white;
+    padding: 0px;
+    width: 15%;
+}
+
+#legend div {
+    padding: 5px;
+    font-family: Schoolbell;
+    display:block;
+    width: 100%;
+    height: 30px;
+    margin: 0px;
+}
+
 .heading {
     font-family: Rock Salt;
 }

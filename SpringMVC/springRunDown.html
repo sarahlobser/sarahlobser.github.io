@@ -12,6 +12,23 @@
         <h1 class="heading">SpringMVC: the low-down on project creation</h1>
     </div>
     
+    <div id=legend>
+        <div class="highlights">Annotations
+        </div>
+        <div class="passedObj">Passed Object
+        </div>
+        <div class="urlPattern">url Pattern
+        </div>
+        <div class="jsp">.jsp
+        </div>
+        <div class="param">Parameter
+        </div>
+        <div class="controllerName">Controller Name
+        </div>
+        <div class="packageName">Controller Package
+        </div>
+    </div>
+    
     <h2 class="comment">1. Make a new dynamic web project, and convert to Maven.</h2>
     
     <div class="maven" >
@@ -90,6 +107,9 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd"&gt;
 
 	&lt;context:component-scan base-package="<sp class="packageName">Controller package name</sp>"/&gt;
+    // Un-comment this section if using Autowiring.
+    //&lt;bean id="beanId" class="package.Class"&gt; 
+    //&lt;/bean&gt;
 &lt;/beans&gt;
         </code>
         </pre>
@@ -113,8 +133,8 @@
 &lt;title&gt;Insert title here&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;form action="<sp class="urlPattern">process.pattern</sp>" method="GET"\&gt;
-	parameter 1&lt;input type="text" name="<sp class="param">param</sp>" value=""&gt;&lt;br\&gt;
+&lt;form action="<sp class="urlPattern">process.pattern</sp>" method="GET"&gt;
+	parameter 1&lt;input type="text" name="<sp class="param">param</sp>" value=""&gt;&lt;br&gt;
 	&lt;input type="submit" name="submit" value="submit"/&gt;
 &lt;/form&gt;
 
@@ -147,8 +167,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 <sp class="highlights">@Controller</sp>
 public class <sp class="controllerName">NAME</sp> {
-    @Autowired
-    private ClassYouWant object;
+    //@Autowired    // Un-comment this section if using Autowiring.
+    //private ClassYouWant object;
     
 	<sp class="highlights">@RequestMapping</sp>("<sp class="urlPattern">process.pattern</sp>")
 	public ModelAndView processData(<sp class="highlights">@RequestParam</sp>("<sp class="param">param</sp>") String one) {
