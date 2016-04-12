@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Schoolbell' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/springRunDownStyles.css">
+    <title>SpringMVC</title>
+</head>
+    
+<body>
+    <div id="header">
+        <h1 class="heading">SpringMVC: the low-down on project creation</h1>
+    </div>
+    
+    <h2 class="comment">1. Make a new dynamic web project, and convert to Maven.</h2>
+    
+    <div class="maven" >
+        <h1>MAVEN dependencies</h1>
+        <p class="comment">After you convert your project to a Maven project, the 
+        following dependencies need to be added at the end of the pom.xml file.</p>
+        <pre>
+        <code>
+&lt;dependencies&gt;
+	&lt;dependency&gt;
+		&lt;groupId&gt;org.springframework&lt;/groupId&gt;
+		&lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+		&lt;version&gt;4.2.4.RELEASE&lt;/version&gt;
+	&lt;/dependency&gt;
+	&lt;dependency&gt;
+		&lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+		&lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;
+		&lt;version&gt;3.1.0&lt;/version&gt;
+	&lt;/dependency&gt;
+	&lt;dependency&gt;
+		&lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+		&lt;artifactId&gt;jstl&lt;/artifactId&gt;
+		&lt;version&gt;1.2&lt;/version&gt;
+	&lt;/dependency&gt;
+&lt;/dependencies&gt;
+        </code>
+        </pre>
+    </div>
+    
+<h2 class="comment">2. Make a WEB-INF/web.xml file.</h2>
+    
+    <!-- web.xml -->
+    <div class="xmlBlock">
+        <h1>web.xml</h1>
+        <p class="comment">The NAME specified here will match the name of the Controller. The
+        url pattern specified in the servlet-mapping will match the .html form action 
+        and the Controller request mapping annotation.</p>
+        <pre>
+        <code>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1"&gt;
+	&lt;servlet&gt;
+		&lt;servlet-name&gt;<sp class="controllerName">NAME</sp>&lt;/servlet-name&gt;
+		&lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
+	&lt;/servlet&gt;
+	&lt;servlet-mapping&gt;
+		&lt;servlet-name&gt;<sp class="controllerName">NAME</sp>&lt;/servlet-name&gt;
+		&lt;url-pattern&gt;<sp class="urlPattern">*.pattern</sp>&lt;/url-pattern&gt;
+	&lt;/servlet-mapping&gt;
+&lt;/web-app&gt;
+        </code>
+        </pre>
+    </div>
+    
+<h2 class="comment">3. Make a WEB-INF/NAME-servlet.xml file, where NAME is the name 
+    of your Controller.</h2>
+    
+   <!-- NAME-servlet.xml -->
+    <div class="xmlBlock">
+        <h1><sp class="controllerName">NAME</sp>-servlet.xml</h1>
+        <p class="comment">The package specified here will match the package holding 
+        the Controller.</p>
+        <pre>
+        <code>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd"&gt;
+
+	&lt;context:component-scan base-package="<sp class="packageName">Controller package name</sp>"/&gt;
+&lt;/beans&gt;
+        </code>
+        </pre>
+    </div> 
+    
+<h2 class="comment">4. Build an .html file that will accept user input with a form.</h2>
+    <!-- .html page -->
+    <div class="htmlBlock">
+        <h1>.html</h1>
+        <p class="comment">This is where input will be entered by the user in a form.
+        The form action will specify a url pattern that will match the servlet-mapping 
+        in the NAME-servlet.xml file as well as the @RequestMapping in the Controller. 
+        The input parameter name will match the parameter name in 
+        the Controller class that follws @RequestParameter</p>
+        <pre>
+        <code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;title&gt;Insert title here&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form action="<sp class="urlPattern">process.pattern</sp>" method="GET"\&gt;
+	parameter 1&lt;input type="text" name="<sp class="param">param</sp>" value=""&gt;&lt;br\&gt;
+	&lt;input type="submit" name="submit" value="submit"/&gt;
+&lt;/form&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+        </code>
+        </pre>
+    </div>
+    
+<h2 class="comment">5. Build your Controller.</h2>
+    
+<!-- NAME.java -->
+    <div class="servletBlock">
+        <h1>Controller</h1>
+        <p class="comment">This is where all the action happens. Preface the class declaration 
+        with @Controller. Preface the method with @RequestMapping(*the url pattern specified 
+        in the NAME-servlet.xml file AND matching the .html form action*) Preface the method 
+        parameter(s) with @RequestParam(*name of parameter matches html input*). The 
+        method creates a ModelAndView, sets the view name to the .jsp filename, and adds 
+        an object that will match the JSP call in the .jsp. The method will return this 
+        ModelAndView.</p>
+        <pre>
+        <code>
+package <sp class="packageName">web</sp>;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+<sp class="highlights">@Controller</sp>
+public class <sp class="controllerName">NAME</sp> {
+	<sp class="highlights">@RequestMapping</sp>("<sp class="urlPattern">process.pattern</sp>")
+	public ModelAndView processData(<sp class="highlights">@RequestParam</sp>("<sp class="param">param</sp>") String one) {
+		String out = one;
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("<sp class="jsp">resultsPage.jsp</sp>");
+		mv.addObject("<sp class="passedObj">passedObj</sp>", out);
+		return mv;
+		
+	}
+
+}
+        </code>
+        </pre>
+    </div>
+    
+<h2 class="comment">6. Build a .jsp file that will receive from the Controller whatever will 
+    be displayed to the user.</h2>
+    <!-- .jsp page -->
+    <div class="jspBlock">
+        <h1><sp class="jsp">.jsp</sp></h1>
+        <p class="comment">This is where the results will be displayed to the user. The only 
+        item of note here is the JSP tag in the usual form (${   }). The parameter inside 
+        the curly braces needs to match the name the Controller added to the 
+            ModelAndView.</p>
+        <pre>
+        <code>
+&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+&lt;title&gt;Insert title here&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;p&gt;<sp class="passedObj">${passedObj}</sp>&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+        </code>
+        </pre>
+    </div>
+</body>
+</html>
