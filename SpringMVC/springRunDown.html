@@ -147,6 +147,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 <sp class="highlights">@Controller</sp>
 public class <sp class="controllerName">NAME</sp> {
+    @Autowired
+    private ClassYouWant object;
+    
 	<sp class="highlights">@RequestMapping</sp>("<sp class="urlPattern">process.pattern</sp>")
 	public ModelAndView processData(<sp class="highlights">@RequestParam</sp>("<sp class="param">param</sp>") String one) {
 		String out = one;
