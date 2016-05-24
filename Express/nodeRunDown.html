@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <title>
+        </title>
+    </head>
+    <body>
+        <h1>How to make a Node.js Express project using Andrew's favorite file system</h1>
+        <div class="level1"><span class="step">1</span> Create and enter project folder, run npm init.
+    This creates package.json<br><br>
+            project/
+    <div class="level2"><span class="step">2</span>app.js 
+        <div class="level3"><p><span class="step">6</span>Set up app.js: </p></div>
+        <div class="level3"><p>require express</p>
+            <pre><code>
+            var express = require('express');</code></pre></div>
+        <div class="level3"><p>app = express()</p>
+            <pre><code>
+            var app = express();</code></pre></div>
+        <div class="level3"><p>require path</p>
+            <pre><code>
+            var path = require('path');</code></pre></div>
+        <div class="level3"><p>set location of views folder</p>
+            <pre><code>
+            app.set('views', path.join(__dirname, 'app_server', 'views'));</code></pre></div>
+        <div class="level3"><p>set location of static content</p>
+            <pre><code>
+            app.use(express.static(__dirname + '/public'));</code></pre></div>
+        <div class="level3"><p>set handlebars to be default templating engine</p>
+            <pre><code>
+            var handlebars = require('express-handlebars').create({defaultLayout:'../../app_server/views/layouts/main'});
+            app.engine('handlebars', handlebars.engine);
+            app.set('view engine', 'handlebars');</code></pre></div>
+        <div class="level3"><p>write custom 404/500 routes</p>
+            <pre><code>
+            app.use(function(req, res){
+                  res.status(404);
+                  res.send('404');
+            });
+
+            app.use(function(err, req, res, next){
+                  console.log(err.stack);
+                  res.status(500);
+                  res.send('500');
+            });</code></pre></div>
+        <div class="level3"><p>use app.listen to set up port 3000</p>
+            <pre><code>
+            app.listen(3000, function(){
+                  console.log('Toto app started on http://localhost:' +  
+                  3000 + '; press ctrl-c to terminate.');
+            });</code></pre></div></div>
+    <div class="level2"><span class="step">4</span>app_server/ 
+        <div class="level3">controllers/
+            <div class="level4">main.js     <span class="comment">Contains logic for your routes</span>
+                <pre><code>
+                module.exports.index = function(req, res) {
+                    res.render('index.handlebars', {Welcome:'You finally found my fake company!'});
+                };
+
+                module.exports.about = function(req, res) {
+                    res.render('about.handlebars');
+                };
+
+                module.exports.contact = function(req, res) {
+                    res.render('contact.handlebars', {form: 'object'});
+                }</code></pre></div></div>
+        <div class="level3">modules/</div>
+        <div class="level3">routes/
+            <div class="level4">index.js        <span class="comment">Contains routes. Requires controller logic.</span>
+                <pre><code>
+                var express = require('express');
+                var router = express.Router();
+                var controller = require('../controllers/main.js');
+
+                router.get('/', controller.index);
+                router.get('/about', controller.about);
+                router.get('/contact', controller.contact);
+
+                module.exports = router;</code></pre></div></div>
+        <div class="level3">views/ <span class="comment">Has all partial handlebars</span>
+            <pre><code>
+            404.handlebars
+            about.handlebars
+            contact.handlebars
+            index.handlebars</code></pre>
+            <div class="level4">layouts/ <span class="comment">Has all general html layouts</span>
+            <pre><code>     main.handlebars</code></pre></div></div></div>
+    <div class="level2">node_modules/  <span class="comment">Created for you.</span></div>
+    <div class="level2">package.json</div>
+    <div class="level2"><span class="step">3</span>public/ </div>
+    
+<span class="step">5</span> Run npm install on any needed packages. You can check package.json to make sure you got 'em.
+        <pre><code>
+        npm install express
+        npm install --save express-handlebars</code></pre></div>
+    </body>
+</html>
+

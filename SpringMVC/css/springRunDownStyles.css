@@ -2,62 +2,13 @@ body {
     padding: 30px;
 }
 
-#header {
+h1{
     float: right;
     background-color: black;
     color: white;
     text-align: center;
-    width: 90%;
-}
-
-#legend {
-    position: fixed;
-    top: 150px;
-    right: 100px;
-    background-color: white;
-    padding: 0px;
-    width: 15%;
-}
-
-#legend div {
-    padding: 5px;
-    font-family: Schoolbell;
-    display:block;
-    width: 100%;
-    height: 30px;
-    margin: 0px;
-}
-
-.heading {
     font-family: Rock Salt;
-}
-
-.highlights {
-    background-color: yellow;
-}
-
-.jsp {
-    background-color: #ffffdd;
-}
-
-.urlPattern {
-    background-color: #66eeee;
-}
-
-.passedObj {
-    background-color: #ffaacc;
-}
-
-.param {
-    background-color: #ffbb33;
-}
-
-.controllerName {
-    background-color: #dd99ff;
-}
-
-.packageName {
-    background-color: #77ff88;
+    width: 90%;
 }
 
 pre {
@@ -66,38 +17,10 @@ pre {
     white-space: -pre-wrap;      /* Opera 4-6 */
     white-space: -o-pre-wrap;    /* Opera 7 */
     word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    background-color: #eeeeee;
 }
 
-.comment {
+p {
     font-family: Schoolbell, Rock Salt, sans-serif;
     line-height: 20px;
 }
-
-body div {
-    width: 50%;
-    margin: 20px;
-    padding: 10px 40px;
-    overflow-x: scroll;
-    background-color: #eeeeee;
-}
-/*
-.htmlBlock {
-    
-    border-color: yellow;
-    border-style: solid;
-}
-
-.jspBlock {
-    border-color: orange;
-    border-style: solid;
-}
-
-.xmlBlock {
-    border-color: aqua;
-    border-style: solid;
-}
-
-.servletBlock {
-    border-color: darkseagreen;
-    border-style: solid;
-}*/

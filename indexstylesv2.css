@@ -1,0 +1,85 @@
+#exlinksBar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    
+}
+#twitter {
+    width: 50px;
+    height: 50px;
+    background-color:aqua;
+    float: left;
+}
+#linkedIn {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    float: left;
+}
+#headText {
+    position: relative;
+    top: 100px;
+    width: 100%;
+    height: 20%;
+    font-family: Rock Salt;
+    font-size: 50px;
+    text-align: center;
+}
+#navBar {
+    
+    position: fixed;
+    top: 40%;
+    width: 100%;
+    font-family: monospace;
+    font-size: 20px;
+    color:aliceblue;
+    display: block;
+    list-style-type: none;
+    align-content: center;
+}
+#navBar li {
+    float: left;
+    padding: 20px;
+    border: 1px;
+    border-color: white;
+    border-style: double;
+}
+#navBar li:hover {
+    color: aquamarine;
+}
+
+body {
+	background-color: black;
+}
+
+h1 {
+ 	font-family: Andale Mono, sans-serif;
+ 	font-size: 40pt;
+ 	color: white;
+ 	margin-top: 50px;
+}
+
+#fronttext {
+	width: 50%;
+	color: #1a1a1a;
+	font-family: Meddon, Chalkduster, Andale Mono, sans-serif;
+	font-size: 25pt;
+	line-height: 19pt;
+	margin-left: .5em;
+	margin-right: 2em;
+}
+#right {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 50%;
+	margin: 0;
+	font-size: 8px;
+	font-family: Helvetica;
+}
+
+#right img {
+	float: right;
+	width: 100%;
+}
