@@ -32,6 +32,10 @@
             var handlebars = require('express-handlebars').create({defaultLayout:'../../app_server/views/layouts/main'});
             app.engine('handlebars', handlebars.engine);
             app.set('view engine', 'handlebars');</code></pre></div>
+        <div class="level3"><p>require routing from index</p>
+            <pre><code>
+            app.use('/', require('./app_server/routes/index'));
+            </code></pre></div>
         <div class="level3"><p>write custom 404/500 routes</p>
             <pre><code>
             app.use(function(req, res){
