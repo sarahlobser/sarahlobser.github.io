@@ -2,13 +2,26 @@ body {
     padding: 30px;
 }
 
-h1{
-    float: right;
+#header h1 {
     background-color: black;
     color: white;
     text-align: center;
     font-family: Rock Salt;
     width: 90%;
+}
+
+h1 {
+    font-family: serif;
+}
+
+h2 {
+    font-family: Schoolbell;
+}
+
+.step {
+    background-color: #eeeeee;
+    padding: 2em;
+    margin-right: 30%;
 }
 
 pre {
@@ -23,4 +36,43 @@ pre {
 p {
     font-family: Schoolbell, Rock Salt, sans-serif;
     line-height: 20px;
+}
+
+.highlights {
+    background-color: #ffaaff;
+}
+
+.passedObj {
+    background-color: #ff6666;
+}
+
+.urlPattern {
+    background-color: #ff9e67;
+}
+
+.jsp {
+    background-color: #8888cc;
+}
+
+.param {
+    background-color: #ffff88;
+}
+
+.controllerName {
+    background-color: #99ee77;
+}
+
+.packageName {
+    background-color: #66ffff;
+}
+
+#legend {
+    position: fixed;
+    top: 30%;
+    right: 10%;
+    font-family: Schoolbell;
+}
+
+#legend div {
+    padding: .5em;
 }

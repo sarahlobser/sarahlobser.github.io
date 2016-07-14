@@ -31,7 +31,7 @@
     
     <h2 class="comment">1. Make a new dynamic web project, and convert to Maven.</h2>
     
-    <div class="maven" >
+    <div class="step" >
         <h1>MAVEN dependencies</h1>
         <p class="comment">After you convert your project to a Maven project, the 
         following dependencies need to be added at the end of the pom.xml file.</p>
@@ -61,7 +61,7 @@
 <h2 class="comment">2. Make a WEB-INF/web.xml file.</h2>
     
     <!-- web.xml -->
-    <div class="xmlBlock">
+    <div class="step">
         <h1>web.xml</h1>
         <p class="comment">The NAME specified here will match the name of the Controller. The
         url pattern specified in the servlet-mapping will match the .html form action 
@@ -90,7 +90,7 @@
     of your Controller.</h2>
     
    <!-- NAME-servlet.xml -->
-    <div class="xmlBlock">
+    <div class="step">
         <h1><sp class="controllerName">NAME</sp>-servlet.xml</h1>
         <p class="comment">The package specified here will match the package holding 
         the Controller.</p>
@@ -107,9 +107,9 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd"&gt;
 
 	&lt;context:component-scan base-package="<sp class="packageName">Controller package name</sp>"/&gt;
-    // Un-comment this section if using Autowiring.
-    //&lt;bean id="beanId" class="package.Class"&gt; 
-    //&lt;/bean&gt;
+    <strong>If using Autowiring:</strong>
+    &lt;bean id="beanId" class="<span class="packageName">package</span>.Class"&gt; 
+    &lt;/bean&gt;
 &lt;/beans&gt;
         </code>
         </pre>
@@ -117,7 +117,7 @@
     
 <h2 class="comment">4. Build an .html file that will accept user input with a form.</h2>
     <!-- .html page -->
-    <div class="htmlBlock">
+    <div class="step">
         <h1>.html</h1>
         <p class="comment">This is where input will be entered by the user in a form.
         The form action will specify a url pattern that will match the servlet-mapping 
@@ -147,7 +147,7 @@
 <h2 class="comment">5. Build your Controller.</h2>
     
 <!-- NAME.java -->
-    <div class="servletBlock">
+    <div class="step">
         <h1>Controller</h1>
         <p class="comment">This is where all the action happens. Preface the class declaration 
         with @Controller. Preface the method with @RequestMapping(*the url pattern specified 
@@ -188,7 +188,7 @@ public class <sp class="controllerName">NAME</sp> {
 <h2 class="comment">6. Build a .jsp file that will receive from the Controller whatever will 
     be displayed to the user.</h2>
     <!-- .jsp page -->
-    <div class="jspBlock">
+    <div class="step">
         <h1><sp class="jsp">.jsp</sp></h1>
         <p class="comment">This is where the results will be displayed to the user. The only 
         item of note here is the JSP tag in the usual form (${   }). The parameter inside 
